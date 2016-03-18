@@ -9,20 +9,40 @@
     <script type="text/javascript" src="apiKey.js"></script>
     <script type="text/javascript" src="index.js"></script>
     <title>Yoda Sings</title>
+    <!-- ==============handlebars================ -->
+    <script id="songInfo-template" type="text/x-handlebars-template">
+      {{artistName}} -
+      {{trackName}}<br>
+      Album: {{albumName}}<br>
+      <img id="album-cover" src="{{albumCover}}"/>
+    </script>
+    <script id="lyrics-template" type="text/x-handlebars-template">
+      {{yodaLyrics}}
+    </script>
+    <!-- =================end of handlebars=============== -->
   </head>
   <body>
-    <h1>Yoda Sings</h1>
-    <p>Enter the name of an artist and the title of a song and Yoda will use the force to give you the lyrics.</p>
+    <h1>Sings Yoda. Yes, hmmm.</h1>
+    <p>Use the force to give you the lyrics, enter the name of an artist and the title of a song and <img src="photos/yoda-small.gif"/>  will. Herh herh herh.</p>
     <form action="">
       <label for="">
-        <input type="text" id ="artist-search" placeholder="Artist" value="Justin Bieber">
-        <input type="text" id ="song-search" placeholder="Song" value="Sorry">
+        <input type="text" class="search" id ="artist-search" placeholder="Artist">
+        <input type="text" class="search" id ="song-search" placeholder="Song">
       </label>
       <button type="button" id="submit-btn">Submit</button>
     </form>
     <div id="yoda">
-      <img src="photos/yoda.png" alt="" />
+      <img id="yoda-pic" src="photos/yoda.png"/>
+      <div id="lyrics-container"></div>
+      <div id="songInfo-container"></div>
     </div>
+    <!-- <div id="songInfo-container"></div>
+    <script id="songInfo-template" type="text/x-handlebars-template">
+      {{artistName}}<br>
+      {{albumName}}<br>
+      {{trackName}}<br>
+      <img id="album-cover" src="{{albumCover}}"/>
+    </script> -->
 
   </body>
 </html>

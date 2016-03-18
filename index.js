@@ -42,15 +42,30 @@ $.ajax({
     console.log(info);
     // console.log(info.trackLyrics);
     // console.log(typeof info.trackLyrics);
-    info.trackLyrics = info.trackLyrics.slice(0, -58)
+    info.trackLyrics = info.trackLyrics.slice(0, -58);
     console.log(info.trackLyrics);
+    info.trackLyrics = info.trackLyrics.split("\n");
+    console.log(info.trackLyrics);
+    info.trackLyrics = info.trackLyrics.join(", ");
+    console.log(info.trackLyrics);
+    console.log(typeof info.trackLyrics);
+
+
+
+
     var yodaQuery = "https://yoda.p.mashape.com/yoda?sentence=";
         // example = "You will learn how to speak like me someday";
 
     $.ajax({
       url: yodaQuery + info.trackLyrics,
+      // url: yodaQuery + "Yeah, is it too late now to say sorry?" + " Cause I'm missing more than just your body",
       success: function(data) {
-        console.log(data);
+        // console.log(data);
+        info.yodaLyrics = data;
+        // console.log(yodaLyrics);
+        // var template = Handlebars.compile($('#lyrics-template').html()),
+        //     songLyrics = template(info);
+        //     $('#lyrics-container').html(songLyrics);
       },
       error: function(err) {
         console.log("error");
@@ -59,17 +74,25 @@ $.ajax({
         xhr.setRequestHeader("X-Mashape-Authorization", yodaKey);
       }
       // used beforeSend to input the X-Mashape-Authorization key
+    }).done(function(){
+      console.log('....done');
+      console.log(info.yodaLyrics);
+      foo = info.yodaLyrics.replace(', ,', ',');
+      console.log("foo: ",foo);
+
+      var songTemplate = Handlebars.compile($('#songInfo-template').html()),
+          songInfo = songTemplate(info);
+          $('#songInfo-container').html(songInfo);
+      var lyricsTemplate = Handlebars.compile($('#lyrics-template').html()),
+          jediLyrics = lyricsTemplate(info);
+          $('#lyrics-container').html(jediLyrics);
+
+
+          // $('#lyrics-container').html(yodaLyrics);
+
     });//end of yoda ajax
   });//end of lyricQuery ajax
-
-
-
-
-
-
 });//end of songQuery ajax
-
-
 });//end of submit click function
 
 var info = {
@@ -78,7 +101,8 @@ var info = {
   albumName: undefined,
   trackName: undefined,
   albumCover: undefined,
-  trackLyrics: undefined
+  trackLyrics: undefined,
+  yodaLyrics: undefined
 };
 
 

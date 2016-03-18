@@ -1,9 +1,49 @@
 body{
-  background: black;
+  background: #435243;
   color: white;
   font-family: fantasy;
 }
+h1{
+  text-align: center;
+}
+p{
+  text-align: center;
+}
+form{
+  text-align: center;
+}
+.search{
+  background: #AEBDB6;
+  /*color: white;*/
+  border: none;
+}
+#submit-btn{
+  background: #87A388;
+  border: none;
+  border-radius: 10%;
+  /*color: gray;*/
+}
 #yoda{
-display: flex;
-justify-content: flex-end;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+  }
+#yoda-pic{
+  width: 33%;
+  height: 33%;
+}
+#lyrics-container{
+  align-self: center;
+  width: 33%;
+  height: 33%;
+}
+#songInfo-container{
+  align-self: center;
+  text-align: center;
+}
+#album-cover{
+  width: 55%;
+  height: 55%;
+  border-radius: 10%;
+  border: 3px solid white;
 }
