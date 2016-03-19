@@ -32,7 +32,6 @@ form{
   font-size: 18px;
 }
 #content{
-  top: -10%;
   display: flex;
   justify-content: flex-start;
   flex-direction: row-reverse;
