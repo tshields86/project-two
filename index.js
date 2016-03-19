@@ -2,15 +2,15 @@ document.addEventListener("DOMContentLoaded", function(event){
 
 
 
-$('#submit-btn').on('click', function() {
-var artist = document.getElementById('artist-search').value;
+$('#submit-btn').on('keypress click', function(e) {
+var artist = $('#artist-search').val();
+var song = $('#song-search').val();
 if (artist === ''){
-  alert("Please provide an artist.");
+  alert("Yoda says: Provide an artist. Hmmmmmm..");
   return;
 }
-var song = document.getElementById('song-search').value;
 if (song === ''){
-  alert("Please provide a song.");
+  alert("Yoda says: Provide a song. Yeesssssss.");
   return;
 }
 
@@ -23,11 +23,16 @@ $.ajax({
 }).done(function(data) {
     // console.log("This is the full data: ",data);
   // console.log(data.message.body.track_list[0]);
+  if (data.message.header.available === 0){
+    alert("Yoda says: Song that is not, again please try.");
+    return;
+  }
   info.trackId = data.message.body.track_list[0].track.track_id;
   info.artistName = data.message.body.track_list[0].track.artist_name;
   info.albumName = data.message.body.track_list[0].track.album_name;
   info.trackName = data.message.body.track_list[0].track.track_name;
   info.albumCover = data.message.body.track_list[0].track.album_coverart_350x350;
+
   // console.log("Info: ",info);
 
   var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + musixMatchKey;
@@ -43,12 +48,17 @@ $.ajax({
     // console.log(info.trackLyrics);
     // console.log(typeof info.trackLyrics);
     info.trackLyrics = info.trackLyrics.slice(0, -58);
-    console.log(info.trackLyrics);
+    console.log("Original: ",info.trackLyrics);
+
+    info.trackLyrics = info.trackLyrics.split("\n\n");
+    console.log("split on double line break: ",info.trackLyrics);
+    info.trackLyrics = info.trackLyrics.join(". ");
+    console.log("after the join: ",info.trackLyrics);
     info.trackLyrics = info.trackLyrics.split("\n");
-    console.log(info.trackLyrics);
-    info.trackLyrics = info.trackLyrics.join(", ");
-    console.log(info.trackLyrics);
-    console.log(typeof info.trackLyrics);
+    console.log("split on single line break: ",info.trackLyrics);
+    info.trackLyrics = info.trackLyrics.join(". ");
+    console.log("after the join: ",info.trackLyrics);
+    // console.log(typeof info.trackLyrics);
 
 
 
@@ -63,9 +73,6 @@ $.ajax({
         // console.log(data);
         info.yodaLyrics = data;
         // console.log(yodaLyrics);
-        // var template = Handlebars.compile($('#lyrics-template').html()),
-        //     songLyrics = template(info);
-        //     $('#lyrics-container').html(songLyrics);
       },
       error: function(err) {
         console.log("error");
@@ -75,10 +82,12 @@ $.ajax({
       }
       // used beforeSend to input the X-Mashape-Authorization key
     }).done(function(){
-      console.log('....done');
-      console.log(info.yodaLyrics);
-      foo = info.yodaLyrics.replace(', ,', ',');
-      console.log("foo: ",foo);
+      // console.log('....done');
+      console.log("Yoda: ",info.yodaLyrics);
+      // info.yodaLyrics = info.yodaLyrics.split(".  ");
+      // console.log("Yoda split on period: ", info.yodaLyrics);
+      // info.yodaLyrics = info.yodaLyrics.join("\n");
+      // console.log("after adding line breaks back in: ", info.yodaLyrics);
 
       var songTemplate = Handlebars.compile($('#songInfo-template').html()),
           songInfo = songTemplate(info);

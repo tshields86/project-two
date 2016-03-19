@@ -1,13 +1,18 @@
 body{
   background: #435243;
-  color: white;
+  color: #D3EBD3;
   font-family: fantasy;
 }
-h1{
+#title{
   text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  text-shadow: 1.5px 1.5px 5px #cab809;
 }
 p{
   text-align: center;
+  font-size: 20px;
+  text-shadow: 2px 2px 5px #cab809;
 }
 form{
   text-align: center;
@@ -16,26 +21,30 @@ form{
   background: #AEBDB6;
   /*color: white;*/
   border: none;
+  font-size: 18px;
+  /*border-radius: 5%;*/
 }
 #submit-btn{
   background: #87A388;
   border: none;
   border-radius: 10%;
-  /*color: gray;*/
+  color: #D3EBD3;
+  font-size: 18px;
 }
-#yoda{
+#content{
+  top: -10%;
   display: flex;
   justify-content: flex-start;
   flex-direction: row-reverse;
   }
 #yoda-pic{
-  width: 33%;
-  height: 33%;
+  width: 30%;
+  height: 30%;
 }
 #lyrics-container{
   align-self: center;
-  width: 33%;
-  height: 33%;
+  width: 36%;
+  height: 36%;
 }
 #songInfo-container{
   align-self: center;
@@ -45,5 +54,8 @@ form{
   width: 55%;
   height: 55%;
   border-radius: 10%;
-  border: 3px solid white;
+  border: 3px solid  #D3EBD3;
+}
+::-webkit-input-placeholder {
+   color: #555555;
 }
