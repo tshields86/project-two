@@ -1,3 +1,6 @@
+*{
+  cursor: url(photos/Lightsaber.png), auto;
+}
 body{
   background: #435243;
   color: #D3EBD3;

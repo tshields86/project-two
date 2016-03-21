@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event){
 
-
-
 $('#submit-btn').on('keypress click', function(e) {
 var artist = $('#artist-search').val();
 var song = $('#song-search').val();
@@ -97,11 +95,11 @@ $.ajax({
           $('#lyrics-container').html(jediLyrics);
 
 
-          // $('#lyrics-container').html(yodaLyrics);
 
     });//end of yoda ajax
   });//end of lyricQuery ajax
 });//end of songQuery ajax
+
 });//end of submit click function
 
 var info = {
