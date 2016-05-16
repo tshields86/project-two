@@ -12,6 +12,7 @@ if (song === ''){
   return;
 }
 
+// var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + (process.env.MUSIXMATCH || musixMatchKey);
 var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + musixMatchKey;
 
 $.ajax({
@@ -33,6 +34,7 @@ $.ajax({
 
   // console.log("Info: ",info);
 
+  // var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + (process.env.MUSIXMATCH || musixMatchKey);
   var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + musixMatchKey;
   // console.log(lyricQuery);
   $.ajax({
@@ -76,6 +78,7 @@ $.ajax({
         console.log("error");
       },
       beforeSend: function(xhr) {
+        // xhr.setRequestHeader("X-Mashape-Authorization", (process.env.YODAKEY || yodaKey));
         xhr.setRequestHeader("X-Mashape-Authorization", yodaKey);
       }
       // used beforeSend to input the X-Mashape-Authorization key
