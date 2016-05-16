@@ -12,8 +12,8 @@ if (song === ''){
   return;
 }
 
-var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + process.env.MUSIXMATCH;
-// var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + musixMatchKey;
+// var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + process.env.MUSIXMATCH;
+var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + 'bc924a04e765517423a6f2b637327c2f';
 
 $.ajax({
   url: songQuery,
@@ -34,8 +34,8 @@ $.ajax({
 
   // console.log("Info: ",info);
 
-  var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + process.env.MUSIXMATCH;
-  // var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + musixMatchKey;
+  // var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + process.env.MUSIXMATCH;
+  var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + 'bc924a04e765517423a6f2b637327c2f';
   // console.log(lyricQuery);
   $.ajax({
     url: lyricQuery,
@@ -77,8 +77,8 @@ $.ajax({
         console.log("error");
       },
       beforeSend: function(xhr) {
-        xhr.setRequestHeader("X-Mashape-Authorization", process.env.YODAKEY);
-        // xhr.setRequestHeader("X-Mashape-Authorization", yodaKey);
+        // xhr.setRequestHeader("X-Mashape-Authorization", process.env.YODAKEY);
+        xhr.setRequestHeader("X-Mashape-Authorization", 'lHg2Psw6tLmshsI058Xhf6EickOZp1g2Juojsn0KNtkjMllIxC');
       }
       // used beforeSend to input the X-Mashape-Authorization key
     }).done(function(){
