@@ -1,5 +1,5 @@
 {
-  "name": "project-two",
+  "name": "Yoda-Sings",
   "version": "1.0.0",
   "description": "General Assembly Web Development Immersive API Project",
   "main": "index.js",
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/tshields86/project-two#readme",
   "dependencies": {
-    "express": "^4.13.4"
+  "express": "^4.13.4"
   }
 }
