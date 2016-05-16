@@ -12,8 +12,8 @@ if (song === ''){
   return;
 }
 
-// var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + (process.env.MUSIXMATCH || musixMatchKey);
-var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + musixMatchKey;
+var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + process.env.MUSIXMATCH;
+// var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + musixMatchKey;
 
 $.ajax({
   url: songQuery,
@@ -34,8 +34,8 @@ $.ajax({
 
   // console.log("Info: ",info);
 
-  // var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + (process.env.MUSIXMATCH || musixMatchKey);
-  var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + musixMatchKey;
+  var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + process.env.MUSIXMATCH;
+  // var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + musixMatchKey;
   // console.log(lyricQuery);
   $.ajax({
     url: lyricQuery,
@@ -68,7 +68,6 @@ $.ajax({
 
     $.ajax({
       url: yodaQuery + info.trackLyrics,
-      // url: yodaQuery + "Yeah, is it too late now to say sorry?" + " Cause I'm missing more than just your body",
       success: function(data) {
         // console.log(data);
         info.yodaLyrics = data;
@@ -78,8 +77,8 @@ $.ajax({
         console.log("error");
       },
       beforeSend: function(xhr) {
-        // xhr.setRequestHeader("X-Mashape-Authorization", (process.env.YODAKEY || yodaKey));
-        xhr.setRequestHeader("X-Mashape-Authorization", yodaKey);
+        xhr.setRequestHeader("X-Mashape-Authorization", process.env.YODAKEY);
+        // xhr.setRequestHeader("X-Mashape-Authorization", yodaKey);
       }
       // used beforeSend to input the X-Mashape-Authorization key
     }).done(function(){
