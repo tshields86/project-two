@@ -13,7 +13,7 @@ if (song === ''){
 }
 
 // var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + process.env.MUSIXMATCH;
-var songQuery = 'http://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + 'bc924a04e765517423a6f2b637327c2f';
+var songQuery = 'https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&q_track=' + song + '&q_artist=' + artist + '&f_has_lyrics=1&apikey=' + 'bc924a04e765517423a6f2b637327c2f';
 
 $.ajax({
   url: songQuery,
@@ -35,7 +35,7 @@ $.ajax({
   // console.log("Info: ",info);
 
   // var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + process.env.MUSIXMATCH;
-  var  lyricQuery = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + 'bc924a04e765517423a6f2b637327c2f';
+  var  lyricQuery = 'https://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&track_id=' + info.trackId + '&apikey=' + 'bc924a04e765517423a6f2b637327c2f';
   // console.log(lyricQuery);
   $.ajax({
     url: lyricQuery,
